@@ -10,7 +10,10 @@ router.get('/', EmployeeController.getAllEmployees)
 // CREATE - POST
 router.post('/', EmployeeController.createNewEmployee);
 
-// UPDATE - patch
-router.patch('/:id', EmployeeController.updateEmployee)
+// UPDATE - PATCH
+router.patch('/:id', EmployeeController.updateEmployee);
+
+// DELETE - DELETE
+router.delete('/:id', EmployeeController.deleteEmployee);
 
 module.exports = router

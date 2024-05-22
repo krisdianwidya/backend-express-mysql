@@ -19,8 +19,15 @@ const updateEmployee = (body, id) => {
     return dbPool.execute(SQLQuery)
 }
 
+const deleteEmployee = (id) => {
+    const SQLQuery = `DELETE FROM employees WHERE employee_id=${id}`
+
+    return dbPool.execute(SQLQuery);
+}
+
 module.exports = {
     getAllEmployees,
     createNewEmployee,
-    updateEmployee
+    updateEmployee,
+    deleteEmployee
 }
