@@ -5,6 +5,7 @@ const express = require('express');
 const employeesRoutes = require('./routes/employees')
 
 const app = express()
+app.use(express.json())
 
 app.use('/employees', employeesRoutes)
 

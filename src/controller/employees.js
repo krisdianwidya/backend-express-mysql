@@ -16,6 +16,25 @@ const getAllEmployees = async (req, res) => {
     }
 }
 
+const createNewEmployee = async (req, res) => {
+    const { body } = req;
+
+    try {
+        await EmployeeModel.createNewEmployee(body);
+        res.status(201).json({
+            message: "CREATE new user success",
+            data: body
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "server error",
+            serverMessage: error
+        })
+    }
+
+}
+
 module.exports = {
-    getAllEmployees
+    getAllEmployees,
+    createNewEmployee
 }
