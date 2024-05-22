@@ -16,6 +16,24 @@ const getAllEmployees = async (req, res) => {
     }
 }
 
+const getEmployee = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const [data] = await EmployeeModel.getEmployee(id);
+
+        res.json({
+            message: "GET an employee success",
+            data
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "Server error",
+            serverMessage: error
+        })
+    }
+}
+
 const createNewEmployee = async (req, res) => {
     const { body } = req;
 
@@ -71,6 +89,7 @@ const deleteEmployee = async (req, res) => {
 
 module.exports = {
     getAllEmployees,
+    getEmployee,
     createNewEmployee,
     updateEmployee,
     deleteEmployee

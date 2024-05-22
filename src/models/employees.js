@@ -6,6 +6,12 @@ const getAllEmployees = () => {
     return dbPool.execute(SQLQuery)
 }
 
+const getEmployee = (id) => {
+    const SQLQuery = `SELECT * FROM employees WHERE employee_id=${id}`;
+
+    return dbPool.execute(SQLQuery)
+}
+
 const createNewEmployee = (body) => {
     const SQLQuery = `INSERT INTO employees (first_name, last_name, gender, role, salary, birth_date, join_date) 
     VALUES ('${body.first_name}', '${body.last_name}', '${body.gender}', '${body.role}', '${body.salary}', '${body.birth_date}', '${body.join_date}')`
@@ -14,7 +20,7 @@ const createNewEmployee = (body) => {
 }
 
 const updateEmployee = (body, id) => {
-    const SQLQuery = `UPDATE employees SET first_name='${body.first_name}', last_name='${body.last_name}', gender='${body.gender}', role='${body.role}', salary=${body.salary}, birth_date='${body.birth_date}', join_date='${body.join_date}' WHERE employee_id='${id}'`
+    const SQLQuery = `UPDATE employees SET first_name='${body.first_name}', last_name='${body.last_name}', gender='${body.gender}', role='${body.role}', salary=${body.salary}, birth_date='${body.birth_date}', join_date='${body.join_date}' WHERE employee_id=${id}`
 
     return dbPool.execute(SQLQuery)
 }
@@ -27,6 +33,7 @@ const deleteEmployee = (id) => {
 
 module.exports = {
     getAllEmployees,
+    getEmployee,
     createNewEmployee,
     updateEmployee,
     deleteEmployee

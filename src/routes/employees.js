@@ -4,8 +4,11 @@ const EmployeeController = require('../controller/employees')
 
 const router = express.Router();
 
-// READ - GET
+// READ - GET all employees
 router.get('/', EmployeeController.getAllEmployees)
+
+// READ - GET an employee
+router.get('/:id', EmployeeController.getEmployee)
 
 // CREATE - POST
 router.post('/', EmployeeController.createNewEmployee);
