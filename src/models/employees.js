@@ -13,7 +13,14 @@ const createNewEmployee = (body) => {
     return dbPool.execute(SQLQuery)
 }
 
+const updateEmployee = (body, id) => {
+    const SQLQuery = `UPDATE employees SET first_name='${body.first_name}', last_name='${body.last_name}', gender='${body.gender}', role='${body.role}', salary=${body.salary}, birth_date='${body.birth_date}', join_date='${body.join_date}' WHERE employee_id='${id}'`
+
+    return dbPool.execute(SQLQuery)
+}
+
 module.exports = {
     getAllEmployees,
-    createNewEmployee
+    createNewEmployee,
+    updateEmployee
 }

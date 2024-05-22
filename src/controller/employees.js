@@ -22,7 +22,7 @@ const createNewEmployee = async (req, res) => {
     try {
         await EmployeeModel.createNewEmployee(body);
         res.status(201).json({
-            message: "CREATE new user success",
+            message: "CREATE new employee success",
             data: body
         })
     } catch (error) {
@@ -34,7 +34,26 @@ const createNewEmployee = async (req, res) => {
 
 }
 
+const updateEmployee = async (req, res) => {
+    const { id } = req.params
+    const { body } = req;
+
+    try {
+        await EmployeeModel.updateEmployee(body, id);
+        res.json({
+            message: "UPDATE an amployee success",
+            data: { id, ...body }
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "server error",
+            serverMessage: error
+        })
+    }
+}
+
 module.exports = {
     getAllEmployees,
-    createNewEmployee
+    createNewEmployee,
+    updateEmployee
 }
